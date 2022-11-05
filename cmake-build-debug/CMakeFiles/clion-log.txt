@@ -1,0 +1,4 @@
+/snap/clion/209/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/209/bin/ninja/linux/ninja -DCMAKE_C_COMPILER=/usr/bin/gcc -G Ninja -S /home/jeza/CLionProjects/ial_2022_du2 -B /home/jeza/CLionProjects/ial_2022_du2/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jeza/CLionProjects/ial_2022_du2/cmake-build-debug
