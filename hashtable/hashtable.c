@@ -66,7 +66,7 @@ void ht_insert(ht_table_t *table, char *key, float value) {
     if(tmpItem != NULL){
         tmpItem->value = value;
     } else {
-        tmpItem = malloc(sizeof(ht_item_t*));
+        tmpItem = malloc(sizeof(struct ht_item));
         if(tmpItem == NULL) return;
         tmpItem->value = value;
         tmpItem->key = key;
