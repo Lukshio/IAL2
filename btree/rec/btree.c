@@ -130,29 +130,21 @@ void bst_delete(bst_node_t **tree, char key) {
        // tempTreeNode = (*tree); toto zpusobuje segfault - vola se free, ale nenuluje se tree, takze to vleze do dealokace
         //kdyz nema zadny potomek tak jen uvolnim a nastavim odkaz z parent na null
         if((*tree)->right == NULL && (*tree)->left == NULL){
-            free((*tree));
-            ((*tree)) = NULL;
+            free(*tree);
+            (*tree) = NULL;
             return;
         }
-        //pokud ma jeden potomek, propojim ho s parent
+        //pokud ma jeden potomek, zkoiruju hodnotu a smazu jej, tim jej jakoby posunu a zachova se vazba
         if((*tree)->right != NULL && (*tree)->left == NULL){
             tempTreeNode = (*tree)->right;
-            (*tree)->right = tempTreeNode->right;
-            (*tree)->left = tempTreeNode->left;
-            (*tree)->value = tempTreeNode->value;
-            (*tree)->key = tempTreeNode->key;
-            free((tempTreeNode));
-            tempTreeNode = NULL;
+            free((*tree));
+            (*tree) = tempTreeNode;
             return;
         }
         if((*tree)->right == NULL && (*tree)->left != NULL){
             tempTreeNode = (*tree)->left;
-            (*tree)->right = tempTreeNode->right;
-            (*tree)->left = tempTreeNode->left;
-            (*tree)->value = tempTreeNode->value;
-            (*tree)->key = tempTreeNode->key;
-            free((tempTreeNode));
-            tempTreeNode = NULL;
+            free(*tree);
+            (*tree) = tempTreeNode;
             return;
         }
         //pro odstraneni s dvema potomky zavolam pomocnou fci
